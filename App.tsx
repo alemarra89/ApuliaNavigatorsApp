@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import FormScreen from './src/pages/FormScreen';
 import HomeScreen from './src/pages/HomeScreen';
 import NotificationDetailScreen from './src/pages/NotificationDetailScreen';
 import NotificationsScreen, { Item } from './src/pages/NotificationsScreen';
@@ -18,6 +19,7 @@ export type DrawerType = {
     param?: string
   }
   Tabs: undefined
+  Form: undefined
 };
 const Drawer = createDrawerNavigator<DrawerType>();
 
@@ -63,12 +65,16 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator screenOptions={{
-        unmountOnBlur: true
+        unmountOnBlur: true,
+        sceneContainerStyle: {
+          backgroundColor: '#afdaee'
+        }
       }}>
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="NotificationsStack" component={NotificationStack} />
         <Drawer.Screen name="Pagina" component={PaginaScreen} />
         <Drawer.Screen name="Tabs" component={TabsNavigator} />
+        <Drawer.Screen name="Form" component={FormScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
